@@ -1,14 +1,15 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
-require 'jsonx'
+require 'rico_json'
 
 args = ARGV.dup
 
 
 if args.length > 0
   file = args[0]
-  JSONX::run(file)
+  json = RicoJSON.read_file(file)
 else
+  RicoJSON.read_string(STDIN.read)
   # Explain how to use it
 end
