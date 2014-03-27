@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require 'jsonx'
+
+args = ARGV.dup
+
+
+if args.length > 0
+  file = args[0]
+  JSONX::run(file)
+else
+  # Explain how to use it
+end
