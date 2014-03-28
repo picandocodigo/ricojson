@@ -1,15 +1,21 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-
 require 'rico_json'
 
 args = ARGV.dup
 
-
-if args.length > 0
-  file = args[0]
-  json = RicoJSON.read_file(file)
-else
+# TODO: Validate args
+case args.size
+when 0
   RicoJSON.read_string(STDIN.read)
-  # Explain how to use it
+when 1
+  if args[0] != '-o'
+    RicoJSON.read_file(args[0])
+  else
+    RicoJSON.read_string(STDIN.read, true)
+  end
+when 2
+  RicoJSON.read_file(args[1], true)
+else
+  puts 'Usage: json-rico [-o] [file]'
 end
