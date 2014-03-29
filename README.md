@@ -15,30 +15,30 @@ It works only on **GNU/Linux** and **Mac OS X** (theoretically).
 ## Install
 
 ```bash
-$ gem install rico-json
+$ gem install ricojson
 ```
 
 ## Usage
 
 You can just **display a JSON file** with it:
 ```bash
-$ rico-json my-terrible-not-indented-json-file.json
+$ ricojson my-terrible-not-indented-json-file.json
 ```
 
 Or **pipe a file's content**:
 ```bash
-$ cat other-terrible-not-indented-file.json | rico-json
+$ cat other-terrible-not-indented-file.json | ricojson
 ```
 
 And **display an API's JSON return** value directly from your command line:
 ```bash
-$ curl https://mnav.heroku.com/artworks/62 | rico-json
+$ curl https://mnav.heroku.com/artworks/62 | ricojson
 ```
 
 And if you want to see this in your default app/text editor use the
 `-o` parameter:
 ```bash
-$ rico-json -o my-terrible-not-indented-json-file.json
+$ ricojson -o my-terrible-not-indented-json-file.json
 ```
 
 ## TODO
