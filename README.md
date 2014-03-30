@@ -6,7 +6,7 @@ A gem to open ugly one-line-not-indented JSON files in a way that you
 can read them.
 
 By default it the JSON (prettified with Ruby's JSON library)
-to your stdoutput. You can also pass the `-o` parameter for it to open
+to your standard output. You can also pass the `-o` parameter for it to open
 the JSON file in your system's default application or text editor for
 files with the `.json` extension.
 
@@ -40,10 +40,6 @@ And if you want to see this in your default app/text editor use the
 ```bash
 $ ricojson -o my-terrible-not-indented-json-file.json
 ```
-
-## TODO
- * Write the gorram tests
-
 Thanks @dcadenas for pairing with me and helping me improve the code and
 functionality.
 
