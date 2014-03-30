@@ -1,6 +1,10 @@
 # Rico JSON
 
-![](http://i.imgur.com/D10XVTS.jpg)
+<div align="center">
+    <img src="http://i.imgur.com/D10XVTS.jpg">
+</div>
+
+## Description
 
 A gem to open ugly one-line-not-indented JSON files in a way that you
 can read them.
@@ -40,6 +44,8 @@ And if you want to see this in your default app/text editor use the
 ```bash
 $ ricojson -o my-terrible-not-indented-json-file.json
 ```
+
+## Acknowledgements
 Thanks @dcadenas for pairing with me and helping me improve the code and
 functionality.
 
