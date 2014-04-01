@@ -10,10 +10,10 @@ Usage: ricojson [-oh] [-f file]
 
 Synopsis:
 
-  json-rico is a command line utility that will format a given JSON input
+  ricojson is a command line utility that will format a given JSON input
   so that it can be read by humans.
 
-  The default action for json-rico consists on reading from STDIN and its
+  The default action for ricojson consists on reading from STDIN and is
   meant to be used by piping other commnands results into it, however you
   can also specify a file to read from.
 
