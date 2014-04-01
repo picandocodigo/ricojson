@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/picandocodigo/json-pretty'
   s.licenses = ['GPL-3']
   s.executables << 'ricojson'
+  s.add_runtime_dependency('clap')
   s.add_development_dependency 'minitest', '~> 5.3'
   s.add_development_dependency 'rubocop', '~> 0.19'
 end
