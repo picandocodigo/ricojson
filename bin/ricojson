@@ -1,21 +1,38 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-require 'rico_json'
+require 'ricojson'
+require 'clap'
 
-args = ARGV.dup
+input_file    = nil
+open_result   = false
+help_message  = <<EOS
+Usage: ricojson [-oh] [-f file]
 
-# TODO: Validate args
-case args.size
-when 0
-  RicoJSON.read_string(STDIN.read)
-when 1
-  if args[0] != '-o'
-    RicoJSON.read_file(args[0])
-  else
-    RicoJSON.read_string(STDIN.read, true)
-  end
-when 2
-  RicoJSON.read_file(args[1], true)
+Synopsis:
+
+  json-rico is a command line utility that will format a given JSON input
+  so that it can be read by humans.
+
+  The default action for json-rico consists on reading from STDIN and its
+  meant to be used by piping other commnands results into it, however you
+  can also specify a file to read from.
+
+Flags:
+
+  -f file       Read JSON from specified file.
+  -o            Opens the resulting formatted JSON in your default
+                text editor.
+  -h            Prints this message
+EOS
+
+
+Clap.run ARGV,
+  '-f' => lambda { |file| input_file = file },
+  '-o' => lambda { open_result = true },
+  '-h' => lambda { abort(help_message) }
+
+if input_file.nil?
+  RicoJSON.read_string(STDIN.read, open_result)
 else
-  puts 'Usage: json-rico [-o] [file]'
+  RicoJSON.read_file(input_file, open_result)
 end
