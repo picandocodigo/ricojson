@@ -22,7 +22,7 @@ Flags:
   -f file       Read JSON from specified file.
   -o            Opens the resulting formatted JSON in your default
                 text editor.
-  -h            Prints this message
+  -h            Prints this message.
 EOS
 
 
