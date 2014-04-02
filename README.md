@@ -24,9 +24,20 @@ $ gem install ricojson
 
 ## Usage
 
+Flags:
+
+```
+  -f file       Read JSON from specified file.
+  -o            Opens the resulting formatted JSON in your default
+                text editor.
+  -h            Prints help message.
+```
+
+### Examples
+
 You can just **display a JSON file** with it:
 ```bash
-$ ricojson my-terrible-not-indented-json-file.json
+$ ricojson -f my-terrible-not-indented-json-file.json
 ```
 
 Or **pipe a file's content**:
@@ -42,12 +53,13 @@ $ curl https://mnav.heroku.com/artworks/62 | ricojson
 And if you want to see this in your default app/text editor use the
 `-o` parameter:
 ```bash
-$ ricojson -o my-terrible-not-indented-json-file.json
+$ ricojson -o -f my-terrible-not-indented-json-file.json
 ```
 
 ## Acknowledgements
 Thanks @dcadenas for pairing with me and helping me improve the code and
-functionality.
+functionality. Thanks @poteland for improving the command line options
+with [clap](https://github.com/soveran/clap).
 
 Jason picture by
 <small>[Robert Ball](https://secure.flickr.com/photos/robertball/) -
@@ -59,7 +71,7 @@ License</small>
 Copyright © 2014 - Fernando Briano
 
     This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
+    it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
