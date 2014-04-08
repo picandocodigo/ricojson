@@ -25,7 +25,6 @@ Flags:
   -h            Prints this message.
 EOS
 
-
 Clap.run ARGV,
   '-f' => lambda { |file| input_file = file },
   '-o' => lambda { open_result = true },

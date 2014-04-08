@@ -1,21 +1,34 @@
+# -*- coding: utf-8 -*-
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'ricojson'
 require 'stringio'
 
 describe RicoJSON do
-
-  it 'sould return a pretty JSON' do
-    json = '{"name": "Abed Nadir", "timeline": "Not the darkest one"}'
-    pretty_json = <<-EOS
+  before do
+    @json = '{"name": "Abed Nadir", "timeline": "Not the darkest one"}'
+    @pretty_json = <<-EOS
 {
   \"name\": \"Abed Nadir\",
   \"timeline\": \"Not the darkest one\"
 }
 EOS
+    # Capture STDOUT
     $stdout = StringIO.new
-    RicoJSON.read_string(json)
-    $stdout.string.must_equal pretty_json
+  end
+
+  it 'sould return a pretty JSON' do
+    RicoJSON.read_string(@json)
+    $stdout.string.must_equal @pretty_json
+  end
+
+  it 'should receive a json file and prettify it' do
+    file = Tempfile.new(['json', '.json'])
+    file.write(@json)
+    file.close
+
+    RicoJSON.read_file(file)
+    $stdout.string.must_equal @pretty_json
   end
 
 end
