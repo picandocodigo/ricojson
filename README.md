@@ -1,4 +1,6 @@
 # Rico JSON
+[![Code Climate](https://codeclimate.com/github/picandocodigo/ricojson.png)](https://codeclimate.com/github/picandocodigo/ricojson)
+[![Gem Version](https://badge.fury.io/rb/ricojson.svg)](http://badge.fury.io/rb/ricojson)
 
 <div align="center">
     <img src="http://i.imgur.com/D10XVTS.jpg">
