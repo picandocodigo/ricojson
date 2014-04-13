@@ -4,6 +4,7 @@ require 'tempfile'
 
 # Main RicoJSON functionality
 module RicoJSON
+
   # Define open method for GNU/Linux or Mac OS X platforms
   if RUBY_PLATFORM =~ /linux/
     def self.open(json)

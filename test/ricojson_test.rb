@@ -31,4 +31,12 @@ EOS
     $stdout.string.must_equal @pretty_json
   end
 
+  it 'should accept spaces as filenames' do
+    file = File.new('/tmp/test\ this\ file', 'w+')
+    file.write(@json)
+    file.close
+    RicoJSON.read_file(file)
+    $stdout.string.must_equal @pretty_json
+  end
+
 end
