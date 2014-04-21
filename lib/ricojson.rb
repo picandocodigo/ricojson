@@ -32,6 +32,50 @@ module RicoJSON
     read_string(File.read(filename), open)
   end
 
+  def self.loop(json, level)
+    json.each do|k,v|
+      #print "\033[1m#{k}\033[0m (#{v.class}) "
+      print "  "*level
+      #printf("\033[1m%-15s\033[0m ", k)
+      print "\033[1m#{k}\033[0m: "
+      #print v.class
+      case v
+      when String
+        print "\033[31m\"#{v}\"\033[0m"
+      when Array
+        print "[\n"
+        level += 1
+        loopArray(v, level)
+        print "]"
+        level -= 1
+      when NilClass
+        print "\033[34m#{k}\033[0m"
+      else
+        print v
+      end
+      print "\n"
+    end
+  end
+
+  def self.loopArray(json, level)
+    json.each do|v|
+      print "  "*level
+      case v
+      when String
+        print "\033[31m\"#{v}\"\033[0m"
+      when Array
+        print "[\n"
+        level += 1
+        loop(v, level)
+        print "]"
+        level -= 1
+      else
+        print "\033[34m#{v}\033[0m"
+      end
+      print "\n"
+    end
+  end
+
   # Method for reading a String as an input
   #
   # Example:
@@ -46,11 +90,11 @@ module RicoJSON
   # == Returns:
   #   JSON Rico y Suave
   def self.read_string(json_string, open = false)
-    body = JSON.pretty_generate(JSON.parse(json_string))
+    json = JSON.parse(json_string)
     if open
-      open_in_file(body)
+      open_in_file(JSON.pretty_generate(json))
     else
-      puts body
+      loop(json, 0)
     end
   end
 
