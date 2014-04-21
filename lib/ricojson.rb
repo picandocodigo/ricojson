@@ -33,47 +33,57 @@ module RicoJSON
   end
 
   def self.loop(json, level = 0)
-    json.each do|k,v|
-      #print "\033[1m#{k}\033[0m (#{v.class}) "
-      print "  "*level
-      #printf("\033[1m%-15s\033[0m ", k)
-      print "\033[1m#{k}\033[0m: "
-      #print v.class
-      case v
-      when String
-        print "\033[31m\"#{v}\"\033[0m"
-      when Array
-        print "[\n"
-        level += 1
-        loopArray(v, level)
-        print "]"
-        level -= 1
-      when NilClass
-        print "\033[34m#{k}\033[0m"
-      else
-        print v
-      end
-      print "\n"
+    case json
+    when Hash
+      loop_hash(json, level)
+    when Array
+      loop_array(json, level)
+    else
+      print_color(json)
     end
   end
 
-  def self.loopArray(json, level)
+  def self.loop_hash(json, level)
+    level += 1
+    puts "{"
+    json.each do|k,v|
+      print "  "*level
+      print "\033[1m#{k}\033[0m: "
+      print_color(v, level)
+    end
+    level -= 1
+    print "  "*level
+    print "}"
+  end
+
+  def self.loop_array(json, level)
+    level += 1
+    puts "["
     json.each do|v|
       print "  "*level
-      case v
-      when String
-        print "\033[31m\"#{v}\"\033[0m"
-      when Array
-        print "[\n"
-        level += 1
-        loop(v, level)
-        print "]"
-        level -= 1
-      else
-        print "\033[34m#{v}\033[0m"
-      end
-      print "\n"
+      print_color(v, level)
     end
+    level -= 1
+    print "  "*level
+    print "]"
+  end
+
+  def self.print_color(v, level = 0)
+    case v
+    when String
+      print "\033[31m\"#{v}\"\033[0m"
+    when Fixnum, Float
+      print "\033[34m#{v}\033[0m"
+    when Hash, Array
+      loop(v, level)
+    when FalseClass, TrueClass
+      print "\033[32m#{v}\033[0m"
+    when NilClass
+      print "\033[37mnull\033[0m"
+    else
+      print "(#{v.class}) #{v}"
+    end
+    print "\n"
   end
 
   # Method for reading a String as an input
@@ -93,8 +103,9 @@ module RicoJSON
     json = JSON.parse(json_string)
     if open
       open_in_file(JSON.pretty_generate(json))
-    elseif colors
+    elsif colors
       loop(json)
+      puts ""
     else
       puts JSON.pretty_generate(json) 
     end
