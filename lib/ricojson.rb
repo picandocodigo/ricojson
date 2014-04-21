@@ -28,11 +28,11 @@ module RicoJSON
   #
   # == Returns:
   #   JSON Rico y Suave
-  def self.read_file(filename, open = false)
-    read_string(File.read(filename), open)
+  def self.read_file(filename, open = false, colors = false)
+    read_string(File.read(filename), open, colors)
   end
 
-  def self.loop(json, level)
+  def self.loop(json, level = 0)
     json.each do|k,v|
       #print "\033[1m#{k}\033[0m (#{v.class}) "
       print "  "*level
@@ -89,12 +89,14 @@ module RicoJSON
   #
   # == Returns:
   #   JSON Rico y Suave
-  def self.read_string(json_string, open = false)
+  def self.read_string(json_string, open = false, colors = false)
     json = JSON.parse(json_string)
     if open
       open_in_file(JSON.pretty_generate(json))
+    elseif colors
+      loop(json)
     else
-      loop(json, 0)
+      puts JSON.pretty_generate(json) 
     end
   end
 

@@ -5,6 +5,7 @@ require 'clap'
 
 input_file    = nil
 open_result   = false
+colors        = false
 help_message  = <<EOS
 Usage: ricojson [-oh] [-f file]
 
@@ -28,10 +29,11 @@ EOS
 Clap.run ARGV,
   '-f' => lambda { |file| input_file = file },
   '-o' => lambda { open_result = true },
-  '-h' => lambda { abort(help_message) }
+  '-h' => lambda { abort(help_message) },
+  '-c' => lambda { colors = true }
 
 if input_file.nil?
-  RicoJSON.read_string(STDIN.read, open_result)
+  RicoJSON.read_string(STDIN.read, open_result, colors)
 else
-  RicoJSON.read_file(input_file, open_result)
+  RicoJSON.read_file(input_file, open_result, colors)
 end
