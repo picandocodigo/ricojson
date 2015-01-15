@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors = ['Fernando Briano']
   s.email = 'fernando@picandocodigo.net'
   s.files = ['lib/ricojson.rb']
-  s.homepage = 'https://github.com/picandocodigo/json-pretty'
+  s.homepage = 'https://github.com/picandocodigo/ricojson'
   s.licenses = ['LGPL-3.0']
   s.executables << 'ricojson'
   s.add_runtime_dependency('clap')
