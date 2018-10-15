@@ -1,7 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'ricojson'
-  s.version = '0.1.0'
-  s.date = '2014-04-02'
+  s.version = '0.1.1'
   s.summary = 'A gem to prettify JSON files and (optionally) open them in default app'
   s.description = 'Uses Ruby\'s JSON to parse and format json files, includes an option to open them in the system\'s default application.'
   s.authors = ['Fernando Briano']
@@ -11,6 +10,7 @@ Gem::Specification.new do |s|
   s.licenses = ['LGPL-3.0']
   s.executables << 'ricojson'
   s.add_runtime_dependency('clap')
-  s.add_development_dependency 'minitest', '~> 5.3'
-  s.add_development_dependency 'rubocop', '~> 0.19'
+  s.add_development_dependency 'minitest', '~> 5'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rake'
 end

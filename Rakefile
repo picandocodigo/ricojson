@@ -1,8 +1,8 @@
 require 'rake/testtask'
 require 'ricojson'
 
-Rake::TestTask.new("test") do |t|
-  t.pattern = "test/**/*_test.rb"
+Rake::TestTask.new('test') do |t|
+  t.pattern = 'test/**/*_test.rb'
 end
 
 task :console do
@@ -13,4 +13,4 @@ task :console do
   IRB.start
 end
 
-task :default => 'test'
+task default: 'test'

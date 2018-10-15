@@ -1,13 +1,16 @@
 language: ruby
 rvm:
-  - 2.2.0
-  - 2.1.0
+  - 2.5.1
+  - 2.4.4
+  - 2.3.7
+  - 2.2.10
+  - 2.1.10
   - 1.9.3
   - jruby-19mode
   - jruby-head
   - ruby-head
   - rbx
-install: gem install minitest clap
+install: bundle install
 before_script:
   - gem build ricojson.gemspec
   - gem install ricojson
