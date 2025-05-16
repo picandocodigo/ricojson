@@ -1,7 +1,7 @@
 # Rico JSON
 [![Code Climate](https://codeclimate.com/github/picandocodigo/ricojson.png)](https://codeclimate.com/github/picandocodigo/ricojson)
 [![Gem Version](https://badge.fury.io/rb/ricojson.svg)](http://badge.fury.io/rb/ricojson)
-[![Build Status](https://travis-ci.org/picandocodigo/ricojson.svg?branch=master)](https://travis-ci.org/picandocodigo/ricojson)
+
 
 <div align="center">
     <img src="http://i.imgur.com/D10XVTS.jpg">
@@ -9,13 +9,9 @@
 
 ## Description
 
-A gem to open ugly one-line-not-indented JSON files in a way that you
-can read them.
+A simple command line tool to open ugly one-line-not-indented JSON files in a way that you can read them.
 
-By default it the JSON (prettified with Ruby's JSON library)
-to your standard output. You can also pass the `-o` parameter for it to open
-the JSON file in your system's default application or text editor for
-files with the `.json` extension.
+By default it the JSON (prettified with Ruby's JSON library) to your standard output. You can also pass the `-o` parameter for it to open the JSON file in your system's default application or text editor for files with the `.json` extension.
 
 It works only on **GNU/Linux** and **Mac OS X** (theoretically).
 
