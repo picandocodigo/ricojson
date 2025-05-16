@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-require 'minitest/spec'
 require 'minitest/autorun'
 require 'ricojson'
 require 'stringio'
@@ -19,7 +17,7 @@ EOS
 
   it 'sould return a pretty JSON' do
     RicoJSON.read_string(@json)
-    $stdout.string.must_equal @pretty_json
+    _($stdout.string).must_equal @pretty_json
   end
 
   it 'should receive a json file and prettify it' do
@@ -28,7 +26,7 @@ EOS
     file.close
 
     RicoJSON.read_file(file)
-    $stdout.string.must_equal @pretty_json
+    _($stdout.string).must_equal @pretty_json
   end
 
   it 'should accept spaces as filenames' do
@@ -36,7 +34,6 @@ EOS
     file.write(@json)
     file.close
     RicoJSON.read_file(file)
-    $stdout.string.must_equal @pretty_json
+    _($stdout.string).must_equal @pretty_json
   end
-
 end
